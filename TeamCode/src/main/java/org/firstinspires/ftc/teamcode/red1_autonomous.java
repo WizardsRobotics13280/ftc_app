@@ -13,7 +13,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+//import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 @Autonomous(name="red1_auto", group="auto")
 //@Disabled
@@ -21,7 +23,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class red1_autonomous extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     DcMotor F1, F2, R1, R2; //Declare the 4 motors that should have already configured based on the Holonomic_Basic code.
-    DcMotor colorsensor_arm;
+    //Servo colorsensor_arm;
     //double heading, heading_degrees, power; //Declare heading, heading in degrees, and power, all useful for driving.
     //private void Drive_Forward_Rotations(double rotations, double fheading){} //Use encoders on the motors to measure a number of rotations.
     @Override
@@ -31,13 +33,17 @@ public class red1_autonomous extends LinearOpMode {
         F2 = hardwareMap.get(DcMotor.class, "f2");
         R1 = hardwareMap.get(DcMotor.class, "r1");
         R2 = hardwareMap.get(DcMotor.class, "r2");
+        //colorsensor_arm = hardwareMap.get(Servo.class, "sensor_arm");
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
         R1.setDirection(DcMotorSimple.Direction.FORWARD);
         R2.setDirection(DcMotorSimple.Direction.FORWARD);
-
+        //float hsvValues[] = {0F, 0F, 0F};
         waitForStart(); //Waits for the driver to press play
         Drive_Direction_Time_Improved(950, 0, 1, 0);
+        Drive_Direction_Time_Improved(150 ,0,0,-1);
+        Drive_Direction_Time_Improved(200,0,1,0);
+        Drive_Direction_Time_Improved(200,0,-1,0);
     }
 
 
@@ -78,6 +84,11 @@ public class red1_autonomous extends LinearOpMode {
             R2.setPower(powerR2);
         }
     }
+    /*private void Color_Sensor_Use (){    //The code to run the color sensor so it senses the color of the jewel.
+    *    double startpos = colorsensor_arm.getPosition();
+    *    colorsensor_arm.setPosition(startpos+135);
+    *
+    }*/
 }
 
 /*

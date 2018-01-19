@@ -22,7 +22,8 @@ public class OmniWheelDriverMode extends LinearOpMode {
             F1 = hardwareMap.get(DcMotor.class, "f1");                                // Initialize the motor variable for F1.  Named f1 in the RC phone.
             F2 = hardwareMap.get(DcMotor.class, "f2");                                // Initialize the motor variable for F2.  Named f2 in the RC phone.
             R1 = hardwareMap.get(DcMotor.class, "r1");                                // Initialize the motor variable for R1.  Named r1 in the RC phone.
-            R2 = hardwareMap.get(DcMotor.class, "r2");                                // Initialize the motor variable for R2.  Named r2 in the RC phone.
+            R2 = hardwareMap.get(DcMotor.class, "r2");          // Initialize the motor variable for R2.  Named r2 in the RC phone.
+
 
             waitForStart();                                                            // Wait for the game to start (driver presses PLAY).
 
@@ -54,7 +55,6 @@ public class OmniWheelDriverMode extends LinearOpMode {
 
 
             }
-
 
         }
 }

@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class Holonomic_Basic extends LinearOpMode {
 
     /* Declare OpMode members. */
-    DcMotor F1, F2, R1, R2, arm_vert;														// Declares the DcMotor variables F1, F2, R1, R2.
+    DcMotor F1, F2, R1, R2;                                                     // Declares the DcMotor variables F1, F2, R1, R2.
     double heading, heading_degrees, power, leftstick_xsq, leftstick_ysq;       // Declares the double variables for telemetry.
     double powerF1, powerF2, powerR1, powerR2, arm_vertPower;
     double magnitude = 0.80;
@@ -27,13 +27,14 @@ public class Holonomic_Basic extends LinearOpMode {
         F2 = hardwareMap.get(DcMotor.class, "f2");								// Initialize the motor variable for F2.  Named f2 in the RC phone.
         R1 = hardwareMap.get(DcMotor.class, "r1");								// Initialize the motor variable for R1.  Named r1 in the RC phone.
         R2 = hardwareMap.get(DcMotor.class, "r2");
-        arm_vert = hardwareMap.get(DcMotor.class, "arm_vert");
+
 
         F1.setDirection(DcMotorSimple.Direction.FORWARD);
         F2.setDirection(DcMotorSimple.Direction.FORWARD);
         R2.setDirection(DcMotorSimple.Direction.FORWARD);
         R1.setDirection(DcMotorSimple.Direction.FORWARD);
-        arm_vert.setDirection(DcMotorSimple.Direction.FORWARD);
+
+
         // Initialize the motor variable for R2.  Named r2 in the RC phone.
 
         waitForStart();															// Wait for the game to start (driver presses PLAY).
@@ -41,7 +42,7 @@ public class Holonomic_Basic extends LinearOpMode {
         while (opModeIsActive()) 												/* Run until the end of the match (driver presses STOP). */
         {
             /* Calculate the telemetry values for heading (Left stick determines heading). */
-            heading = -1 * (Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x));  // Calculates the angle in radians measured counterclockwise from the positive x-axis and the heading (x, y)
+            heading = -1 * (Math.atan2(gamepad1.left_stick_y, -gamepad1.left_stick_x));  // Calculates the angle in radians measured counterclockwise from the positive x-axis and the heading (x, y)
             heading_degrees = heading * (180 / Math.PI);                        // Calculates the heading in degrees ??? not used again.
             leftstick_xsq = gamepad1.left_stick_x * gamepad1.left_stick_x;      // ??? this is not used again
             leftstick_ysq = gamepad1.left_stick_y * gamepad1.left_stick_y;              // ??? this is not used again
